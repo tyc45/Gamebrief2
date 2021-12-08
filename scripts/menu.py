@@ -1,10 +1,12 @@
 from dataclasses import dataclass, field
+from typing import ClassVar
+
 import json
 
 @dataclass
 class Menu():
-  player_name: str
-  
+  player_name =  str
+
   def welcome_player(self):
     """ input for player_name"""
     self.player_name = input("Hello! What is your name, adventurer?")
