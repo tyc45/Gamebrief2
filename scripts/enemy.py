@@ -55,6 +55,7 @@ class Enemy(metaclass = ABCMeta):
     # def description(self, des):
     #     self._description = des
 
+    @abstractmethod
     def attack(self, player) -> None:
         """Ennemy attacks a player
 

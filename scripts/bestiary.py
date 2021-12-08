@@ -8,5 +8,10 @@ class Goblin(Enemy):
     _max_attack: int = 15
 
     def attack(self, player) -> None:
+        """The most basic attack
+
+        Args:
+            player ([Player]): The attacked player
+        """        
         print(f"{self.name} the goblin hurls at you")
         super().attack(player)
