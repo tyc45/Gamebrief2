@@ -6,3 +6,7 @@ class Goblin(Enemy):
     _health_points: int = 50
     _min_attack: int = 5
     _max_attack: int = 15
+
+    def attack(self, player) -> None:
+        print(f"{self.name} the goblin hurls at you")
+        super().attack(player)
