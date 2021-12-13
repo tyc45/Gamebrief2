@@ -57,14 +57,14 @@ class Enemy(metaclass = ABCMeta):
 
     @abstractmethod
     def attack(self, player):
-        """Ennemy attacks a player
+        """Enemy attacks a player
 
         Args:
             player (Player): The player this ennemy attacks
         """                
         dmg = random.randint(self.min_attack, self.max_attack)
         player.take_damage(dmg)
-        return player.player_hp
+        return dmg
     
     def healing(self, heal):
         """This heals the enemy

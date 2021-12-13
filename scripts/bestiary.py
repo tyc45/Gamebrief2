@@ -13,6 +13,6 @@ class Goblin(Enemy):
         Args:
             player ([Player]): The attacked player
         """        
-        print(f"{self.name} the goblin hurls at you")
-        super().attack(player)
+        dmg = super().attack(player)
+        print(f"{self.name} the goblin hurls at you for {dmg} damage")
         return player.player_hp
