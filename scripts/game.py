@@ -21,15 +21,14 @@ class Game:
     
     @property
     def player_name(self) -> str:
-        return self.player_name
+        return self._player_name
 
     @player_name.setter
     def player_name(self, name:str):
         if isinstance(name, str):
-            self.player_name = name   
+            self._player_name = name   
         else:
-            self.player_name = 'Player 1'
-
+            self._player_name = 'Player 1'
 
     @property
     def player(self) -> Player:

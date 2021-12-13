@@ -25,9 +25,9 @@ class Player:
         """ 
         This function remove a random number of HP between 5 and 10 to the enemy
         """
-        past_health = enemy.health_points
-        enemy.health_points - random.randint(5, 10)
-        return past_health - enemy.health_points
+        dmg = random.randint(5, 10)
+        enemy.health_points -= dmg
+        return dmg
     
     def take_damage(self, dmg):
         """Function that deals with damage received
@@ -41,11 +41,11 @@ class Player:
         """
         This function adds HP points to the player if he chooses to
         """
-        past_hp = self.player_hp
-        self.player_hp += random.randint(15, 50)
+        heal = random.randint(15, 50)
+        self.player_hp += heal
         if self.player_hp>50:
             self.player_hp = 50
-        return self.player_hp - past_hp
+        return heal
 
     def check_inventory(self):
             """
