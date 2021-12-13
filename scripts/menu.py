@@ -13,7 +13,7 @@ class Menu():
     print (f'ok {self.player_name} we were waiting for you!')
   
   def exit_game(self):
-    print(f"Good bye{self.player_name}, see you later!")
+    print(f"Good bye, see you later!")
 
   def show_score(self):
     with open("save.json") as save:
@@ -30,6 +30,7 @@ class Menu():
       exit_game()
     else:
       raise ValueError("Sorry, Sir I don't understand... Try again...")
+
 
 
 

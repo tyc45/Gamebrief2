@@ -56,19 +56,21 @@ class Enemy(metaclass = ABCMeta):
     #     self._description = des
 
     @abstractmethod
-    def attack(self, player) -> None:
-        """Ennemy attacks a player
+    def attack(self, player):
+        """Enemy attacks a player
 
         Args:
             player (Player): The player this ennemy attacks
         """                
         dmg = random.randint(self.min_attack, self.max_attack)
         player.take_damage(dmg)
+        return dmg
     
-    def heal(self, int) -> None:
+    def healing(self, heal):
         """This heals the enemy
 
         Args:
             int (int): The amount of life healed
         """        
-        self.health_points += int
+        self.health_points += heal
+        return self.health_points
