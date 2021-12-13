@@ -30,7 +30,6 @@ class Game:
         else:
             self.player_name = 'Player 1'
 
-
     @property
     def player(self) -> Player:
         return self._player
