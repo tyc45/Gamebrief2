@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import ClassVar
 import random
+from enemy import Enemy
 
 @dataclass
 class Player:
@@ -24,13 +25,20 @@ class Player:
         """ 
         This function remove a random number of HP between 5 and 10 to the enemy
         """
-        enemy.enemy_hp = enemy.enemy_hp - random.randint(5, 10)
-        return enemy.enemy_hp
+        enemy.health_points -= random.randint(5, 10)
+        return enemy.health_points
     
+    def take_damage(self, dmg):
+        """Function that deals with damage received
+
+        Args:
+            dmg (int): The amount of damage the enemy intends to deal
+        """        
+        self.player_hp -= dmg
 
     def use_potion(self):
         """
-        This function adds HP points to the player if he chooose to
+        This function adds HP points to the player if he chooses to
         """
         self.player_hp += random.randint(15, 50)
         if self.player_hp>50:

@@ -7,11 +7,18 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir)
+
+from bestiary import Goblin
 from player import Player
+
 
 @pytest.fixture
 def player_test():
     return Player("David")
+
+@pytest.fixture
+def enemy_test():
+    return Goblin("Bobby", "Bobby just wants to make friends")
 
 
 class TestPlayer: 
@@ -22,9 +29,13 @@ class TestPlayer:
             Player(50)
             Player(5.5)
         
-    def test_player_attack(self, player_test):
-        assert 30<=player_test.player_attack(45)<=40
-        assert 25<=player_test.player_attack(40)<=35
+    def test_player_attack(self, player_test, enemy_test):
+        assert 40<=player_test.player_attack(enemy_test)<=50
+
+    # def test_player_attack_two(self, player_test, enemy_test):
+    #     assert 25<=player_test.player_attack(enemy_test)<=35
+
+    def test_player_attack_three(self, player_test):
         with pytest.raises(TypeError):
             player_test.player_attack("a",0,5.5)
 

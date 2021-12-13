@@ -9,11 +9,16 @@ brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir)
 
 from bestiary import Goblin
+from player import Player
 
 
 @pytest.fixture
 def enemy_test():
     return Goblin("Bobby", "Bobby just wants to make friends")
+
+@pytest.fixture
+def player_test():
+    return Player("David")
 
 class TestEnemy:
     def test_enemy_health_points(self, enemy_test):
@@ -30,3 +35,13 @@ class TestEnemy:
         assert enemy_test.max_attack == 15
         with pytest.raises(ValueError):
             enemy_test.max_attack = 4
+        
+    def test_attack(self, enemy_test, player_test):
+        assert enemy_test.attack(player_test) == player_test.player_hp
+
+    def test_healing(self, enemy_test):
+        assert enemy_test.healing(20) == 70
+    def test_healing_two(self, enemy_test):
+        assert enemy_test.healing(-5) == 45
+    def test_healing_three(self, enemy_test):
+        assert enemy_test.healing(10) == 60

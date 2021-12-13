@@ -7,7 +7,7 @@ class Goblin(Enemy):
     _min_attack: int = 5
     _max_attack: int = 15
 
-    def attack(self, player) -> None:
+    def attack(self, player):
         """The most basic attack
 
         Args:
@@ -15,3 +15,4 @@ class Goblin(Enemy):
         """        
         print(f"{self.name} the goblin hurls at you")
         super().attack(player)
+        return player.player_hp
