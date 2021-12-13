@@ -3,6 +3,8 @@ import os
 import sys
 import inspect
 
+
+
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 brotherdir = os.path.join(parentdir, "scripts")
@@ -10,21 +12,33 @@ sys.path.insert(0, brotherdir)
 
 from menu import Menu 
 
+from game import Game
+
 class TestMenu:
-    def test_welcome_player(self,monkeypatch):
-        """testing input player name, we will a string"""
-        monkeypatch.setattr('builtins.input', lambda x : "John Do")
-        assert Menu.welcome_player() == 'ok John Do we were waiting for you!'
-        with pytest.raises(TypeError):
-            monkeypatch.setattr('builtins.input', lambda x : 12345)
+    def test_welcome_player(self,monkeypatch, capsys):
+        """testing input player name, we will a string
+        monkeypatch can replace the input for lamba for testing"""
+        monkeypatch.setattr('builtins.input', lambda x : "Joe")
+        Menu().welcome_player()
+        captured = capsys.readouterr()
+        assert captured.out == "ok Joe, we were waiting you!\n"
 
-    @pytest.fixture
-    def menu_test():
-        """create empty menu test """
-        menu_test= Menu()
-        return menu_test
+    def test_game_start(self,monkeypatch,capsys):
     
-    def test_menu(self):
         monkeypatch.setattr('builtins.input', lambda x : 1)
+        Game("Ann")
+        captured = capsys.readouterr()
+        assert captured.out == "In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of Bobby, a Goblin"
 
-    monkeypatch.setattr('builtins.input', lambda x : 1)
+    def test_exit_game(self, monkeypatch, capsys):
+        monkeypatch.setattr('builtins.input', lambda x : 3)
+        Menu().exit_game()
+        captured = capsys.readouterr()
+        assert captured.out =="Good bye, see you later!\n"  
+
+    def test_show_scores(self):
+        """save.txt exist? """  
+        assert os.path.exists(os.path.join(parentdir,"save.text")) == True
+
+
+

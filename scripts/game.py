@@ -16,20 +16,19 @@ class Game:
     def __post_init__(self):
         self.player = Player(self.player_name)
         self.goblin = Goblin('Bobby', 'a Goblin')
-        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {goblin.name}, {goblin.description}')
+        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}')
         self.turn_start()
     
     @property
     def player_name(self) -> str:
-        return self.player_name
+        return self._player_name
 
     @player_name.setter
     def player_name(self, name:str):
         if isinstance(name, str):
-            self.player_name = name   
+            self._player_name = name   
         else:
-            self.player_name = 'Player 1'
-
+            self._player_name = 'Player 1'
 
     @property
     def player(self) -> Player:

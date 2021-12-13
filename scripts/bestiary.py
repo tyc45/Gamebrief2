@@ -11,7 +11,7 @@ class Goblin(Enemy):
         """The most basic attack
 
         Args:
-            player ([Player]): The attacked player
+            player (Player): The attacked player
         """        
         dmg = super().attack(player)
         print(f"{self.name} the goblin hurls at you for {dmg} damage")
