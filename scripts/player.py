@@ -24,8 +24,8 @@ class Player:
         """ 
         This function remove a random number of HP between 5 and 10 to the enemy
         """
-        enemy.enemy_hp = enemy.enemy_hp - random.randint(5, 10)
-        return enemy.enemy_hp
+        enemy.health_points = enemy.health_points - random.randint(5, 10)
+        return enemy.health_points
     
 
     def use_potion(self):
@@ -52,5 +52,5 @@ class Player:
         This function print informations about the player's pv
         (and the number of potions he has ) and the monster's pv.
         """
-        print(f"{self.player_name}, il vous reste {self.player_hp} points de vie et {self.player_inventory} potion(s), le Troll a {enemy.enemy_pv} points de vie.")
+        print(f"{self.player_name}, il vous reste {self.player_hp} points de vie et {self.player_inventory} potion(s), le Troll a {enemy.health_points} points de vie.")
 
