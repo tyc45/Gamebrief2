@@ -46,15 +46,8 @@ class Enemy(metaclass = ABCMeta):
             raise ValueError("max_attack should be greater than min_attack!")
         else: 
             self._max_attack = max
-    
-    # @property
-    # def description(self) -> str:
-    #     return self._description
-    
-    # @description.setter
-    # def description(self, des):
-    #     self._description = des
-
+            
+            
     @abstractmethod
     def attack(self, player):
         """Enemy attacks a player
