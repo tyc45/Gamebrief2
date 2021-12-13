@@ -16,7 +16,7 @@ class Game:
     def __post_init__(self):
         self.player = Player(self.player_name)
         self.goblin = Goblin('Bobby', 'a Goblin')
-        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {goblin.name}, {goblin.description}')
+        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}')
         self.turn_start()
     
     @property
