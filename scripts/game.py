@@ -8,7 +8,7 @@ from menu import Menu
 class Game:
     """This is where the actual gameplay happens, mots methods here are here to make the game progress
     """    
-    player_name: str = 'Player1'
+    player_name: str
     _player: Player = field(init=False)
     _goblin: Goblin = field(init=False)
     # list_enemy
@@ -19,6 +19,18 @@ class Game:
         print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {goblin.name}, {goblin.description}')
         self.turn_start()
     
+    @property
+    def player_name(self) -> str:
+        return self.player_name
+
+    @player_name.setter
+    def player_name(self, name:str):
+        if isinstance(name, str):
+            self.player_name = name   
+        else:
+            self.player_name = 'Player 1'
+
+
     @property
     def player(self) -> Player:
         return self._player
