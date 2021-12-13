@@ -16,21 +16,21 @@ class Menu():
     print(f"Good bye, see you later!")
 
   def show_score(self):
-    with open("save.text") as save:
+    with open("save.json") as save:
       print(save.read())
 
-  def start_game(self):
+  def menu(self):
     """this fonction is the main menu of the game. Call others fonctions for lauch game, read scores and quit the game"""
     player_choice = input("1. Oui aller au combat \n2. Voir les scores \n3. Quitter le jeu.\n")
     if player_choice == "1":
-      Game()
+      return True
     elif player_choice == "2":
-      self.show_score()
+      show_score()
     elif player_choice == "3":
-      self.exit_game()
+      exit_game()
     else:
-      print("Sorry,Sir. I don't understand your choice \n")
-      self.start_game()
+      raise ValueError("Sorry, Sir I don't understand... Try again...")
+
 
 
 
