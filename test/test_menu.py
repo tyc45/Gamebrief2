@@ -46,8 +46,8 @@ class TestMenu:
         captured = capsys.readouterr()
         assert captured.out =="Sorry Sir, I don't understand your choice\n"
 
-# def test_show_score(self, monkeypatch):
-    #     """testing opening text.txt where is storage scores of player"""
+def test_show_score(self, monkeypatch):
+      """testing opening text.txt where is storage scores of player"""
     #     monkeypatch.setattr('builtins.input', lambda x : 2)
     #     assert Menu.game_menu() 
     #     with TempDirectory() as d:
