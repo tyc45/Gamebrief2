@@ -11,6 +11,7 @@ brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir) 
 
 from menu import Menu 
+
 from game import Game
 
 class TestMenu:
