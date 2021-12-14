@@ -2,7 +2,6 @@ from dataclasses import dataclass, field
 from typing import ClassVar
 from player import Player
 from bestiary import Goblin
-from menu import Menu
 
 @dataclass
 class Game:
@@ -52,30 +51,30 @@ class Game:
     def turn_start(self) -> None:
         """Method called at each turn start
         """        
-        print(f'Vous avez {self.player.player_hp} PVs et votre adversaire a {self.goblin.health_points}.')
+        print(f'You have {self.player.player_hp} PVs et your enemy has {self.goblin.health_points} PVs.')
         self.player_choice()
     
     
     def player_choice(self) -> None:
         """The main battle menu
         """        
-        choice = input('Quel est votre choix? 1: Attaque. 2: Potion. 3: Infos')
+        choice = input('What do you want? 1: Attack. 2: Use potion. 3: Infos')
         if choice == 1:
             dmg = self.player.player_attack(self.goblin)
-            print(f'Vous infligez {dmg} dégâts à {self.goblin.name}!')
+            print(f'You afflict {dmg} damages to {self.goblin.name}!')
             if self.goblin.health_points <= 0:
                 self.enemy_death()
 
         elif choice == 2:
             heal = self.player.use_potion()
-            print(f'Vous vous êtes soigné de {heal} PV')
+            print(f'You healed, now you have {heal} PV')
 
         elif choice == 3:
             self.display_infos()
             self.player_choice()
 
         else:
-            print("Ce n'est pas un choix valide!")
+            print("I don't unterstand, can you repeat please?")
             self.player_choice()
         self.enemy_choice()
 
@@ -83,8 +82,8 @@ class Game:
     def display_infos(self):
         """This is called when the player wants to know more about the game state
         """        
-        print(f"Vos PVs actuels: {self.player.player_hp}, votre attaque actuelle: 5-10")
-        print(f"Les PVs de l'enemi: {self.goblin.health_points}, l'attaque de l'enemi: {self.goblin.min_attack}-{self.goblin.max_attack}")
+        print(f"You have: {self.player.player_hp} Hp points, your attack affect : 5-10 damage points")
+        print(f"You enemy has : {self.goblin.health_points} PV points, he can affect between: {self.goblin.min_attack} and {self.goblin.max_attack}damage points")
 
     
     def enemy_choice(self):
@@ -103,17 +102,13 @@ class Game:
         print('Game over!')
         choice = input('Press 1 to play again')
         if choice == 1:
-            Game(self.player.player_name)
-        else:
-            Menu(self.player.player_name)        
+            Game(self.player.player_name)        
 
     def enemy_death(self) -> None:
         """What happens when player kills all enemies
         """        
-        print('Bravo vous avez gagné!')
+        print(f'Congratulations, you win! You beat {self.goblin.name}!')
         self.save_score()
-        Menu()
-    
 
     def score(self) -> int:
         """This calculates the score after a win
