@@ -18,7 +18,7 @@ This is a game for your terminal. It's based on the version python 3.8 (Python 3
 
 Testing by pytest and we use the random library.
 
-##Installation
+## Installation
 
 Clone this repository and open it.
 Run the file main.py 
