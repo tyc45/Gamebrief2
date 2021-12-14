@@ -1,11 +1,10 @@
 from dataclasses import dataclass, field
 from typing import ClassVar
-
-import json
+from game import Game
 
 @dataclass
 class Menu():
-  player_name =  str
+  player_name : str = field(init= False)
 
   def welcome_player(self):
     """ input for player_name"""
@@ -16,20 +15,21 @@ class Menu():
     print(f"Good bye, see you later!")
 
   def show_score(self):
-    with open("save.json") as save:
+    with open("save.text") as save:
       print(save.read())
 
-  def menu(self):
+  def start_game(self):
     """this fonction is the main menu of the game. Call others fonctions for lauch game, read scores and quit the game"""
     player_choice = input("1. Oui aller au combat \n2. Voir les scores \n3. Quitter le jeu.\n")
     if player_choice == "1":
-      return True
+      Game()
     elif player_choice == "2":
-      show_score()
+      self.show_score()
     elif player_choice == "3":
-      exit_game()
+      self.exit_game()
     else:
-      raise ValueError("Sorry, Sir I don't understand... Try again...")
+      self.start_game()
+      
 
 
 
