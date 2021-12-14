@@ -10,6 +10,7 @@ class Menu():
     """ input for player_name"""
     self.player_name = input("Hello! What is your name, adventurer?")
     print (f'ok {self.player_name}, we were waiting you!')
+    self.start_game()
   
   def exit_game(self):
     print(f"Good bye, see you later!")
@@ -18,6 +19,7 @@ class Menu():
     """open the file text where scores are storage"""
     with open("save.text") as save:
       print(save.read())
+   
 
   def start_game(self):
     """this fonction is the main menu of the game. Call others fonctions for lauch game, read scores and quit the game"""
