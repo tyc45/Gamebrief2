@@ -30,7 +30,8 @@ class TestPlayer:
             Player(5.5)
         
     def test_player_attack(self, player_test, enemy_test):
-        assert 40<=player_test.player_attack(enemy_test)<=50
+        assert 5<=player_test.player_attack(enemy_test)<=15
+        assert 35 <= player_test.player_hp <= 50
 
     # def test_player_attack_two(self, player_test, enemy_test):
     #     assert 25<=player_test.player_attack(enemy_test)<=35
@@ -40,6 +41,7 @@ class TestPlayer:
             player_test.player_attack("a",0,5.5)
 
     def test_use_potion(self, player_test):
+        # TODO: Rewrite test to match current code in use_potion()
         assert 40<=player_test.use_potion()<=50
         assert 27<=player_test.use_potion()<=50 
         assert 17<=player_test.use_potion()<=50

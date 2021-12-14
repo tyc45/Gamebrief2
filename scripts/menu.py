@@ -24,14 +24,17 @@ class Menu():
     player_choice = input("1. Oui aller au combat \n2. Voir les scores \n3. Quitter le jeu.\n")
     if player_choice == "1":
       Game()
+      self.start_game()
     elif player_choice == "2":
       self.show_score()
+      self.start_game()
     elif player_choice == "3":
       self.exit_game()
     else:
-      print("Sorry Sir, I don't understand your choice")
+      print("Sorry, Sir I don't understand... Try again...")
       self.start_game()
-      
+
+
 
 
 
