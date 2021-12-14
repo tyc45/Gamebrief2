@@ -32,7 +32,8 @@ class Menu():
       self.exit_game()
     else:
       print("Sorry, Sir I don't understand... Try again...")
-      self.start_game
+      self.start_game()
+
 
 
 
