@@ -81,5 +81,8 @@ class TestGame:
         game_test = Game('test_player')
         assert game_test.score() == 200
 
-    def test_save_score(self):
-        pass
+    def test_save_score(self, monkeypatch):
+        monkeypatch.setattr(Game, 'turn_start', no_func)
+        game_test = Game('test_player')
+        game_test.save_score()
+        assert os.path.exists(os.path.join(parentdir,"save.text")) == True
