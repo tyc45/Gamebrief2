@@ -15,6 +15,7 @@ class Menu():
     print(f"Good bye, see you later!")
 
   def show_score(self):
+    """open the file text where scores are storage"""
     with open("save.text") as save:
       print(save.read())
 
@@ -28,6 +29,7 @@ class Menu():
     elif player_choice == "3":
       self.exit_game()
     else:
+      print("Sorry Sir, I don't understand your choice")
       self.start_game()
       
 

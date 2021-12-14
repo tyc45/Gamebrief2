@@ -48,10 +48,6 @@ class TestMenu:
         assert captured.out =="Sorry Sir, I don't understand your choice\n"
 
 def test_show_score(self, monkeypatch):
-      """testing opening text.txt where is storage scores of player"""
-    #     monkeypatch.setattr('builtins.input', lambda x : 2)
-    #     assert Menu.game_menu() 
-    #     with TempDirectory() as d:
-    #         d.write('text.txt', b'Jean Sans Peur 200')
-    #         d.read('text.txt')== b'Jean Sans Peur 200'
-    #         d.cleanup()
+       """save.txt exist? """  
+        assert os.path.exists(os.path.join(parentdir,"save.text")) == True
+ 
