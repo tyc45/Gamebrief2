@@ -46,13 +46,6 @@ class TestGame:
         captured = capsys.readouterr()
         assert re.search(r'You healed for \d+ HP', captured.out) is not None
 
-    # def test_player_choice_three(self, capsys, monkeypatch):
-    #     monkeypatch.setattr('builtins.input', lambda x: 1)
-    #     monkeypatch.setattr(Game, 'enemy_choice', no_func)
-    #     captured = capsys.readouterr()
-    #     Game('test_player')
-    #     assert re.search(r"Vous infligez \d+ dégâts à ", captured.out) != -1
-
 
     def test_display_infos(self, monkeypatch, capsys):
         monkeypatch.setattr(Game, 'turn_start', no_func)

@@ -18,8 +18,8 @@ class Enemy(metaclass = ABCMeta):
     
     @health_points.setter
     def health_points(self, hp):
-        if hp <= 0:
-            raise ValueError("health_points should be strictly positive")
+        if hp < 0:
+            raise ValueError("health_points should be positive")
         else: self._health_points = hp
     
     @property
@@ -28,7 +28,7 @@ class Enemy(metaclass = ABCMeta):
     
     @min_attack.setter
     def min_attack(self, min):
-        if self._max_attack and self._max_attack < min:
+        if self._max_attack and self._max_attack < min or min < 0:
             raise ValueError("min_attack should be lower than max_attack")
         else: 
             self._min_attack = min
