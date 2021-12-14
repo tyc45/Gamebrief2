@@ -93,7 +93,8 @@ class Game:
         self.goblin.attack(self.player)
         if self.player.player_hp <= 0:
             self.player_death()
-        self.turn_start()
+        else:
+            self.turn_start()
 
  
     def player_death(self) -> None:
