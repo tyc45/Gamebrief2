@@ -9,7 +9,7 @@ class Menu():
   def welcome_player(self):
     """ input for player_name"""
     self.player_name = input("Hello! What is your name, adventurer?")
-    print (f'ok {self.player_name} we were waiting for you!')
+    print (f'ok {self.player_name}, we were waiting you!')
   
   def exit_game(self):
     print(f"Good bye, see you later!")
