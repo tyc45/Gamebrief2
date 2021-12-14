@@ -1,5 +1,4 @@
 from dataclasses import dataclass, field
-from typing import ClassVar
 from game import Game
 
 @dataclass

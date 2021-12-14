@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import ClassVar
 import random
-from enemy import Enemy
 
 @dataclass
 class Player:

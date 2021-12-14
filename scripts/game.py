@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
-from typing import ClassVar
-from player import Player
-from bestiary import Goblin
+from .player import Player
+from .bestiary import Goblin
 
 @dataclass
 class Game:
@@ -62,17 +61,17 @@ class Game:
         """The main battle menu
         """        
         choice = input('What do you want? 1: Attack. 2: Use potion. 3: Infos')
-        if choice == 1:
+        if str(choice) == '1':
             dmg = self.player.player_attack(self.goblin)
             print(f'You deal {dmg} damage to {self.goblin.name}!')
             if self.goblin.health_points <= 0:
                 self.enemy_death()
 
-        elif choice == 2:
+        elif str(choice) == '2':
             heal = self.player.use_potion()
             print(f'You healed for {heal} HP')
 
-        elif choice == 3:
+        elif str(choice) == '3':
             self.display_infos()
             self.player_choice()
         else:
