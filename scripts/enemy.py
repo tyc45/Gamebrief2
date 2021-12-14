@@ -45,7 +45,12 @@ class Enemy(metaclass = ABCMeta):
             raise ValueError("max_attack should be greater than min_attack!")
         else: 
             self._max_attack = max
-            
+    
+    def take_damage(self, dmg):
+        if dmg > self.health_points:
+            self.health_points = 0
+        else:
+            self.health_points -= dmg
             
     @abstractmethod
     def attack(self, player):

@@ -1,4 +1,4 @@
-from scripts.menu import Menu
+from menu import Menu
 
 menu = Menu()
 menu.welcome_player()

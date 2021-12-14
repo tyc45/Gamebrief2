@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
-from .player import Player
-from .bestiary import Goblin
+from player import Player
+from bestiary import Goblin
 
 @dataclass
 class Game:
@@ -17,7 +17,7 @@ class Game:
     def new_game(self):
         self.player = Player(self.player_name)
         self.goblin = Goblin('Bobby', 'a Goblin')
-        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}')
+        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}\n')
         self.turn_start()
 
     @property
@@ -53,23 +53,30 @@ class Game:
     def turn_start(self) -> None:
         """Method called at each turn start
         """        
-        print(f'You have {self.player.player_hp} HPs et your enemy has {self.goblin.health_points} HPs.')
+        print(f'You have {self.player.player_hp} HPs et your enemy has {self.goblin.health_points} HPs.\n')
         self.player_choice()
     
     
     def player_choice(self) -> None:
         """The main battle menu
         """        
-        choice = input('What do you want? 1: Attack. 2: Use potion. 3: Infos')
+        choice = input('\nWhat do you want to do? 1: Attack. 2: Use potion. 3: Infos\n')
         if str(choice) == '1':
             dmg = self.player.player_attack(self.goblin)
             print(f'You deal {dmg} damage to {self.goblin.name}!')
             if self.goblin.health_points <= 0:
                 self.enemy_death()
+            else:
+                self.enemy_choice()
 
         elif str(choice) == '2':
-            heal = self.player.use_potion()
-            print(f'You healed for {heal} HP')
+            if self.player.player_inventory > 0:
+                heal = self.player.use_potion()
+                print(f'You healed for {heal} HP')
+                self.enemy_choice()
+            else:
+                print("You don't have any potions left :(")
+                self.player_choice()
 
         elif str(choice) == '3':
             self.display_infos()
@@ -77,7 +84,6 @@ class Game:
         else:
             print("I don't unterstand, can you repeat please?")
             self.player_choice()
-        self.enemy_choice()
 
 
     def display_infos(self):
@@ -102,7 +108,7 @@ class Game:
         """        
         print('Game over!')
         choice = input('Press 1 to play again')
-        if choice == 1:
+        if str(choice) == '1':
             self.new_game()       
 
     def enemy_death(self) -> None:

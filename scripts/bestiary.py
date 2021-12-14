@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from .enemy import Enemy
+from enemy import Enemy
 
 @dataclass
 class Goblin(Enemy):
