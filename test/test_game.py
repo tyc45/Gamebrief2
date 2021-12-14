@@ -28,23 +28,23 @@ class TestGame:
 
     def test_turn_start(self, capsys, monkeypatch):        
         monkeypatch.setattr(Game, 'player_choice', no_func)
-        game_test = Game('test_player')
+        Game('test_player')
         captured = capsys.readouterr()
-        assert re.search(f"Vous avez {game_test.player.player_hp} PVs et votre adversaire a {game_test.goblin.health_points}.", captured.out) != 1
+        assert re.search(r"You have \d+ HPs et your enemy has \d+.", captured.out) is not None
     
     def test_player_choice_one(self, capsys, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda x: 1)
         monkeypatch.setattr(Game, 'enemy_choice', no_func)
-        captured = capsys.readouterr()
         Game('test_player')
-        assert re.search(r"Vous infligez \d+ dégâts à ", captured.out) != -1
+        captured = capsys.readouterr()
+        assert re.search(r"You deal \d+ damage to \w+!", captured.out) is not None
     
     def test_player_choice_two(self, capsys, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda x: 2)
         monkeypatch.setattr(Game, 'enemy_choice', no_func)
-        captured = capsys.readouterr()
         Game('test_player')
-        assert re.search(r'Vous vous êtes soigné de \d+ PV', captured.out) != -1
+        captured = capsys.readouterr()
+        assert re.search(r'You healed for \d+ HP', captured.out) is not None
 
     # def test_player_choice_three(self, capsys, monkeypatch):
     #     monkeypatch.setattr('builtins.input', lambda x: 1)
@@ -56,10 +56,11 @@ class TestGame:
 
     def test_display_infos(self, monkeypatch, capsys):
         monkeypatch.setattr(Game, 'turn_start', no_func)
+        game_test = Game('test_player')
+        game_test.display_infos()
         captured = capsys.readouterr()
-        Game('test_player')
-        assert re.search(r"Vos PVs actuels: 50, votre attaque actuelle: 5-10", captured.out) != -1
-        assert re.search(r"Les PVs de l'enemi: 50, l'attaque de l'enemi: 5-15", captured.out) != -1
+        assert re.search(r"You have: \d+ HP, your attack deals : 5-10 damage points", captured.out) != None
+        assert re.search(r"You enemy has : \d+ HP, he can deal between: \d+ and \d+ damage points", captured.out) != None
 
     def test_enemy_choice(self, monkeypatch):
         monkeypatch.setattr(Game, 'turn_start', no_func)
@@ -85,4 +86,4 @@ class TestGame:
         monkeypatch.setattr(Game, 'turn_start', no_func)
         game_test = Game('test_player')
         game_test.save_score()
-        assert os.path.exists(os.path.join(parentdir,"save.text")) == True
+        assert os.path.exists(os.path.join(parentdir,"save.txt")) == True
