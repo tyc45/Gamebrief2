@@ -23,11 +23,10 @@ class Harpy(Enemy):
     _min_attack: int = 10
     _max_attack: int = 25
 
-def attack(self, player):
+    def attack(self, player):
         """The most basic attack
-
         Args:
-            player (Player): The attacked player
+        player (Player): The attacked player
         """        
         dmg = super().attack(player)
         print(f"{self.name} the queen harpy scratches you and you loose {dmg} PV's.")
@@ -39,11 +38,11 @@ class GiantPython(Enemy):
     _min_attack: int = 15
     _max_attack: int = 27
 
-def attack(self, player):
+    def attack(self, player):
         """The most basic attack
 
         Args:
-            player (Player): The attacked player
+        player (Player): The attacked player
         """        
         dmg = super().attack(player)
         print(f"{self.name} creates a big bug in your code, you cry and loose {dmg} PV's.")

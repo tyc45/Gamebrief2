@@ -23,13 +23,6 @@ class TestMenu:
         captured = capsys.readouterr()
         assert captured.out == "ok Joe, we were waiting you!\n"
 
-    def test_game_start(self,monkeypatch,capsys):
-    
-        monkeypatch.setattr('builtins.input', lambda x : 1)
-        Game("Ann")
-        captured = capsys.readouterr()
-        assert captured.out == "In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of Bobby, a Goblin"
-
     def test_exit_game(self, monkeypatch, capsys):
         monkeypatch.setattr('builtins.input', lambda x : 3)
         Menu().exit_game()
