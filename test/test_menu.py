@@ -9,6 +9,7 @@ brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir) 
 
 from menu import Menu
+from game import Game
 
 def no_func(self):
     pass
@@ -20,7 +21,7 @@ class TestMenu:
         monkeypatch.setattr(Menu, 'start_game', no_func)
         Menu().welcome_player()
         captured = capsys.readouterr()
-        assert captured.out == "Welcome Joe, we were waiting you!\n"
+        assert captured.out == "\nWelcome Joe, we were waiting for you!\n\n"
 
     def test_exit_game(self, monkeypatch, capsys):
         monkeypatch.setattr('builtins.input', lambda x : 3)
@@ -29,7 +30,12 @@ class TestMenu:
         assert captured.out =="Good bye, see you later!\n"  
 
     def test_show_scores(self):
-        """save.txt exist? """  
+        """save.txt exists? """  
         assert os.path.exists(os.path.join(parentdir,"save.txt")) == True
 
-
+    #TODO: Find a way to work with recursive functions, maybe needs to avoid the recursion altogether in main code
+    # def test_start_game_1(self, monkeypatch, capsys):
+    #     monkeypatch.setattr('builtins.input', lambda x : 4)
+    #     Menu().start_game()
+    #     captured = capsys.readouterr()
+    #     assert captured.out == "Sorry pal, I don't understand... Try again..."

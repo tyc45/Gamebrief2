@@ -7,8 +7,8 @@ class Menu():
 
   def welcome_player(self):
     """ input for player_name"""
-    self.player_name = input("Hello! What is your name, adventurer?")
-    print (f'Welcome {self.player_name}, we were waiting you!')
+    self.player_name = input("Hello! What is your name, adventurer?\n\n")
+    print (f'\nWelcome {self.player_name}, we were waiting for you!\n')
     self.start_game()
   
   def exit_game(self):
@@ -16,13 +16,14 @@ class Menu():
 
   def show_score(self):
     """open the file text where scores are storage"""
-    with open("save.text") as save:
+    with open("save.txt") as save:
       print(save.read())
    
 
   def start_game(self):
     """this fonction is the main menu of the game. Call others fonctions to lauch the game, read scores and quit the game"""
-    player_choice = input("1. Oui aller au combat \n2. Voir les scores \n3. Quitter le jeu.\n")
+    print("What do you want to do?\n")
+    player_choice = input("1. Start a fight \n2. Check leaderboard \n3. Quit game\n")
     if player_choice == "1":
       Game(self.player_name)
       self.start_game()
@@ -32,7 +33,7 @@ class Menu():
     elif player_choice == "3":
       self.exit_game()
     else:
-      print("Sorry, Sir I don't understand... Try again...")
+      print("Sorry pal, I don't understand... Try again...")
       self.start_game()
 
 

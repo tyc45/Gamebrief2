@@ -56,7 +56,7 @@ class Player:
                 self.player_hp = self.use_potion()
                 self.player_inventory -= 1
             else:
-                print("Dommage tu n’as plus de potion")
+                print("Sorry, you don't have any potion left")
 
     def check_infos(self, enemy):
         """

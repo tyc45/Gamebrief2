@@ -15,7 +15,7 @@ class Goblin(Enemy):
         """        
         dmg = super().attack(player)
         print(f"{self.name} the goblin hurls at you for {dmg} damage")
-        return player.player_hp
+        return dmg
 
 @dataclass
 class Harpy(Enemy):
@@ -30,7 +30,7 @@ class Harpy(Enemy):
         """        
         dmg = super().attack(player)
         print(f"{self.name} the queen harpy scratches you and you loose {dmg} PV's.")
-        return player.player_hp
+        return dmg
 
 @dataclass
 class GiantPython(Enemy):
@@ -46,5 +46,4 @@ class GiantPython(Enemy):
         """        
         dmg = super().attack(player)
         print(f"{self.name} creates a big bug in your code, you cry and loose {dmg} PV's.")
-        return player.player_hp    
-    
+        return dmg

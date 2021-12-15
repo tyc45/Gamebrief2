@@ -28,7 +28,9 @@ class Enemy(metaclass = ABCMeta):
     
     @min_attack.setter
     def min_attack(self, min):
-        if self._max_attack and self._max_attack < min or min < 0:
+        if type(min) != int:
+            raise ValueError("min_attack should be an int")
+        elif self._max_attack and self._max_attack < min or min < 0:
             raise ValueError("min_attack should be lower than max_attack")
         else: 
             self._min_attack = min
@@ -63,11 +65,11 @@ class Enemy(metaclass = ABCMeta):
         player.take_damage(dmg)
         return dmg
     
-    def healing(self, heal):
-        """This heals the enemy
+    # def healing(self, heal):
+    #     """This heals the enemy
 
-        Args:
-            int (int): The amount of life healed
-        """        
-        self.health_points += heal
-        return self.health_points
+    #     Args:
+    #         int (int): The amount of life healed
+    #     """        
+    #     self.health_points += heal
+    #     return self.health_points

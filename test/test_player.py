@@ -42,9 +42,9 @@ class TestPlayer:
 
     def test_use_potion(self, player_test):
         # TODO: Rewrite test to match current code in use_potion()
-        assert 40<=player_test.use_potion()<=50
-        assert 27<=player_test.use_potion()<=50 
-        assert 17<=player_test.use_potion()<=50
+        assert 15<=player_test.use_potion()<=50
+        # assert 27<=player_test.use_potion()<=50 
+        # assert 17<=player_test.use_potion()<=50
 
     def test_check_inventory(self):
         pass

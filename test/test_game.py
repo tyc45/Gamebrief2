@@ -37,7 +37,7 @@ class TestGame:
         monkeypatch.setattr(Game, 'enemy_choice', no_func)
         Game('test_player')
         captured = capsys.readouterr()
-        assert re.search(r"You deal \d+ damage to \w+!", captured.out) is not None
+        assert re.search(r"test_player deals \d+ damage to \w+!", captured.out) is not None
     
     def test_player_choice_two(self, capsys, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda x: 2)
@@ -61,11 +61,11 @@ class TestGame:
         game_test.enemy_choice()
         assert 35 <= game_test.player.player_hp < 50
 
-    # def test_player_death(self):
-    #     with pytest.raises(TypeError):
-    #         game_test.player_death.choice = str
-    #         game_test.player_death.choice = float
-    #         game_test.player_death.choice = bool
+    def test_player_death(self, monkeypatch, capsys):
+        monkeypatch.setattr(Game, 'turn_start', no_func)
+        Game().player_death
+        capture = capsys.readouterr()
+        assert re.search(r'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of \w+,', capture.out) != None
 
     # def test_enemy_death(self):
     #     pass

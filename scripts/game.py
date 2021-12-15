@@ -17,7 +17,7 @@ class Game:
     def new_game(self):
         self.player = Player(self.player_name)
         self.goblin = Goblin('Bobby', 'a Goblin')
-        print(f'In a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}\n')
+        print(f'\nIn a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}')
         self.turn_start()
 
     @property
@@ -63,7 +63,7 @@ class Game:
         choice = input('\nWhat do you want to do? 1: Attack. 2: Use potion. 3: Infos\n')
         if str(choice) == '1':
             dmg = self.player.player_attack(self.goblin)
-            print(f'You deal {dmg} damage to {self.goblin.name}!')
+            print(f'{self.player_name} deals {dmg} damage to {self.goblin.name}!')
             if self.goblin.health_points <= 0:
                 self.enemy_death()
             else:

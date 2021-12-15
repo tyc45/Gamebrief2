@@ -23,3 +23,14 @@ Testing by pytest and we use the random library.
 Clone this repository and open it.
 Run the file main.py 
 Enjoy our little game.
+
+## File details
+
+This folder contains :
+-main.py to launch the game (it launches the class Menu)
+-bestiary.py adds or maintains monsters (right now we only use the goblin)
+-enemy.py for the Enemy class and its methods (= enemy turn)
+-player.py for the Player class and its methods (= player turn)
+-menu.py for the game's main menu
+-game.py for the Game class. This files contains methods relating to the game mechanism: turn sequencing and end of the game (by the death of the player or enemy). It also contains the calculation and storage of the score
+The tests are organized in the tests folder. Each file corresponds to the class it tests except bestiary which is tested within the same file as enemy.
