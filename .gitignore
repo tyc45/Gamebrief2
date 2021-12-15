@@ -129,8 +129,7 @@ dmypy.json
 .pyre/
 
 # Save file
-save
+save.txt
 
 # .vscode folder
 .vscode/
-save.txt

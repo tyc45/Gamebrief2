@@ -64,4 +64,3 @@ class Player:
         (and the number of potions he has ) and the monster's pv.
         """
         print(f"{self.player_name}, il vous reste {self.player_hp} points de vie et {self.player_inventory} potion(s), le Troll a {enemy.enemy_pv} points de vie.")
-

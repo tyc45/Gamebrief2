@@ -131,5 +131,3 @@ class Game:
         """        
         with open("save.txt", "a") as save:
             save.write('\n' + self.player.player_name + " " + str(self.score()))
-    
-    

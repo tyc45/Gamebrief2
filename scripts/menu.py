@@ -7,8 +7,11 @@ class Menu():
 
   def welcome_player(self):
     """ input for player_name"""
-    self.player_name = input("Hello! What is your name, adventurer?\n\n")
-    print (f'\nWelcome {self.player_name}, we were waiting for you!\n')
+    if not hasattr(self, 'player_name'):
+      self.player_name = input("Hello! What is your name, adventurer?\n\n")
+      print (f'\nWelcome {self.player_name}, we were waiting for you!\n')
+    else:
+      print(f'\nWelcome back {self.player_name}, how are you today?\n')
     self.start_game()
   
   def exit_game(self):
@@ -35,16 +38,3 @@ class Menu():
     else:
       print("Sorry pal, I don't understand... Try again...")
       self.start_game()
-
-
-
-
-
-
-
-
-    
-    
-    
-
-    

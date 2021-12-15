@@ -14,7 +14,7 @@ from game import Game
 def no_func(self):
     pass
 class TestMenu:
-    def test_welcome_player(self,monkeypatch, capsys):
+    def test_welcome_player_one(self,monkeypatch, capsys):
         """testing input player name, we will a string
         monkeypatch can replace the input for lamba for testing"""
         monkeypatch.setattr('builtins.input', lambda x : "Joe")
@@ -22,6 +22,17 @@ class TestMenu:
         Menu().welcome_player()
         captured = capsys.readouterr()
         assert captured.out == "\nWelcome Joe, we were waiting for you!\n\n"
+    
+    def test_welcome_player_two(self,monkeypatch, capsys):
+        """testing input player name, we will a string
+        monkeypatch can replace the input for lamba for testing"""
+        monkeypatch.setattr('builtins.input', lambda x : "Joe")
+        monkeypatch.setattr(Menu, 'start_game', no_func)
+        menu = Menu()
+        menu.player_name = "Joe"
+        menu.welcome_player()
+        captured = capsys.readouterr()
+        assert captured.out == "\nWelcome back Joe, how are you today?\n\n"
 
     def test_exit_game(self, monkeypatch, capsys):
         monkeypatch.setattr('builtins.input', lambda x : 3)
