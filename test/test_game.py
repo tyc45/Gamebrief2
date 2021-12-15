@@ -30,7 +30,7 @@ class TestGame:
         monkeypatch.setattr(Game, 'player_choice', no_func)
         Game('test_player')
         captured = capsys.readouterr()
-        assert re.search(r"You have \d+ HPs et your enemy has \d+.", captured.out) is not None
+        assert re.search(r"You have \d+ HPs and your enemy has \d+.", captured.out) is not None
     
     def test_player_choice_one(self, capsys, monkeypatch):
         monkeypatch.setattr('builtins.input', lambda x: 1)

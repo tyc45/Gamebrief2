@@ -4,7 +4,7 @@ from bestiary import Goblin
 
 @dataclass
 class Game:
-    """This is where the actual gameplay happens, mots methods here are here to make the game progress
+    """This is where the actual gameplay happens, most methods here are there to make the game progress
     """    
     player_name: str
     _player: Player = field(init=False)
@@ -53,7 +53,7 @@ class Game:
     def turn_start(self) -> None:
         """Method called at each turn start
         """        
-        print(f'You have {self.player.player_hp} HPs et your enemy has {self.goblin.health_points} HPs.\n')
+        print(f'You have {self.player.player_hp} HPs and your enemy has {self.goblin.health_points} HPs.\n')
         self.player_choice()
     
     
