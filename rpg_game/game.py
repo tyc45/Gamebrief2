@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from rpg_game.classes import Adventurer
 from rpg_game.player import Player
 from rpg_game.bestiary import Goblin
 
@@ -15,7 +16,7 @@ class Game:
         self.new_game()
     
     def new_game(self):
-        self.player = Player(self.player_name)
+        self.player = Adventurer(self.player_name)
         self.goblin = Goblin('Bobby', 'a Goblin')
         print(f'\nIn a distant land, you were just an adventurer in search of glory. You were about to abandon your quest to settle down as a baker in a small village ... When the chance to turn and you are in front of {self.goblin.name}, {self.goblin.description}')
         self.turn_start()
@@ -32,12 +33,12 @@ class Game:
             self._player_name = 'Player 1'
 
     @property
-    def player(self) -> Player:
+    def player(self) -> Adventurer:
         return self._player
 
     @player.setter
     def player(self, player):
-        if isinstance(player, Player):
+        if isinstance(player, Adventurer):
             self._player = player
         
     @property
