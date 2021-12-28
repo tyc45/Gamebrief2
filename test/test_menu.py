@@ -8,8 +8,8 @@ parentdir = os.path.dirname(currentdir)
 brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir) 
 
-from menu import Menu
-from game import Game
+from rpg_game.menu import Menu
+from rpg_game.game import Game
 
 def no_func(self):
     pass

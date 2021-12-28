@@ -9,9 +9,9 @@ parentdir = os.path.dirname(currentdir)
 brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir)
 
-from bestiary import Goblin
-from player import Player
-from game import Game
+from rpg_game.bestiary import Goblin
+from rpg_game.player import Player
+from rpg_game.game import Game
 
 def no_func(self):
     pass

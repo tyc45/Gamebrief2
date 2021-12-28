@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
-from player import Player
-from bestiary import Goblin
+from rpg_game.player import Player
+from rpg_game.bestiary import Goblin
 
 @dataclass
 class Game:

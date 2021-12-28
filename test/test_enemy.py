@@ -8,8 +8,8 @@ parentdir = os.path.dirname(currentdir)
 brotherdir = os.path.join(parentdir, "scripts")
 sys.path.insert(0, brotherdir)
 
-from bestiary import Goblin, Harpy, GiantPython
-from player import Player
+from rpg_game.bestiary import Goblin, Harpy, GiantPython
+from rpg_game.player import Player
 
 
 @pytest.fixture
